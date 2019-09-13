@@ -10,10 +10,10 @@ function Nav() {
       <NavLink className="App-link" activeClassName="active-nav" to="/register">
         Register
       </NavLink>
-      <NavLink className="App-link" activeClassName="active-nav" to="/Login">
+      <NavLink className="App-link" activeClassName="active-nav" to="/login">
         Login
       </NavLink>
-      <NavLink className="App-link" activeClassName="active-nav" to="/Recipes">
+      <NavLink className="App-link" activeClassName="active-nav" to="/recipes">
         Recipes
       </NavLink>
     </div>
