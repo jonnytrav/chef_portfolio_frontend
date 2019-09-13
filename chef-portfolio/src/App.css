@@ -19,15 +19,23 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-bar {
+  background-color: #282c34;
+  text-align: right;
+  padding: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-link {
+  color: #61dafb;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.App-link:hover {
+  color: #61dafb;
+  text-decoration: none;
+}
+
+.active-nav {
+  color: rgb(221, 90, 66);
 }
