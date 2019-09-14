@@ -5,9 +5,6 @@ import App from './App';
 //Implementing react router
 import { BrowserRouter as Router } from 'react-router-dom';
 
-//ReactStrap
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 //Redux section
 // import rootReducer from './reducers';
 import { createStore } from 'redux';
