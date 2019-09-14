@@ -12,7 +12,7 @@ const Login = () => {
   };
   return (
     <div className="container">
-      <h1>Login Form</h1>
+      <h1>Login</h1>
       <form className="register-form" onSubmit={submitHandler}>
         <div className="col-75">
           <input
@@ -33,7 +33,7 @@ const Login = () => {
           />
         </div>
         <div className="col-75">
-          <button>Register</button>
+          <button type="submit">Login</button>
         </div>
       </form>
     </div>

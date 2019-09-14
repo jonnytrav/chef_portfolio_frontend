@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
 
+import useGlobal from '../store';
+
 const Register = () => {
   //For hooks this replaces the change handler
   const [username, setUserName] = useState('username');
   const [password, setPassword] = useState('password');
+  const [name, setName] = useState('name');
   const [city, setCity] = useState('city');
   const [state, setState] = useState('state');
   const [email, setEmail] = useState('email');
   const [phone, setPhone] = useState('phone');
   //   console.log(username);
+  const [globalState, globalActions] = useGlobal();
+
   const submitHandler = event => {
     event.preventDefault();
-    console.log({ username, password, city, state, email, phone });
+    const newUserData = { username, password, name, city, state, email, phone };
+    console.log(globalState);
+    //send CRUD request to API with the user info as argument
+    globalActions.registerUser(newUserData);
   };
   return (
     <div className="container">
-      <h1>Registration Form</h1>
+      <h1>Create account</h1>
       <form className="register-form" onSubmit={submitHandler}>
         <div className="col-75">
           <input
@@ -33,6 +41,15 @@ const Register = () => {
             name="password"
             onChange={e => setPassword(e.target.value)}
             onBlur={e => setPassword(e.target.value)}
+          />
+        </div>
+        <div className="col-75">
+          <input
+            placeholder="Name"
+            type="text"
+            name="name"
+            onChange={e => setName(e.target.value)}
+            onBlur={e => setName(e.target.value)}
           />
         </div>
         <div className="col-75">
@@ -72,102 +89,11 @@ const Register = () => {
           />
         </div>
         <div className="col-75">
-          <button>Register</button>
+          <button type="submit">Register</button>
         </div>
       </form>
     </div>
   );
 };
 
-// class Register extends React.Component {
-//   state = {
-//     username: '',
-//     password: '',
-//     city: '',
-//     state: '',
-//     email: '',
-//     phone: ''
-//   };
-
-//   changeHandler = event => {
-//     this.setState({
-//       [event.target.name]: event.target.value
-//     });
-//   };
-
-//   submitHandler = event => {
-//     event.preventDefault();
-//     console.log(this.state);
-//   };
-
-//   render() {
-//     return (
-//       <div className="container">
-//         <h1>Registration Form</h1>
-//         <form className="register-form" onSubmit={this.submitHandler}>
-//           <div className="col-75">
-//             <input
-//               placeholder="Username"
-//               type="text"
-//               name="username"
-//               value={this.state.username}
-//               onChange={this.changeHandler}
-//
-//             />
-//           </div>
-//           <div className="col-75">
-//             <input
-//               placeholder="Password"
-//               type="text"
-//               name="password"
-//               value={this.state.password}
-//               onChange={this.changeHandler}
-//
-//             />
-//           </div>
-//           <div className="col-75">
-//             <input
-//               placeholder="City"
-//               type="text"
-//               name="city"
-//               value={this.state.city}
-//               onChange={this.changeHandler}
-//             />
-//           </div>
-//           <div className="col-75">
-//             <input
-//               placeholder="State"
-//               type="text"
-//               name="state"
-//               value={this.state.state}
-//               onChange={this.changeHandler}
-//             />
-//           </div>
-//           <div className="col-75">
-//             <input
-//               placeholder="Email"
-//               type="text"
-//               name="email"
-//               value={this.state.email}
-//               onChange={this.changeHandler}
-//
-//             />
-//           </div>
-//           <div className="col-75">
-//             <input
-//               placeholder="Phone"
-//               type="text"
-//               name="phone"
-//               value={this.state.phone}
-//               onChange={this.changeHandler}
-//             />
-//           </div>
-//           <div className="col-75">
-//             <button>Register</button>
-//           </div>
-//         </form>
-//       </div>
-//     );
-//   }
-// }
 export default Register;

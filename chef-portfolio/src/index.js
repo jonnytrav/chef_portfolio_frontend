@@ -5,25 +5,10 @@ import App from './App';
 //Implementing react router
 import { BrowserRouter as Router } from 'react-router-dom';
 
-//Redux section
-// import rootReducer from './reducers';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-
-//testing
-function reducer() {
-  return {
-    title: "Hello world! I'm in the Redux store!"
-  };
-}
-const store = createStore(reducer);
-//testing
-
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
+  <Router>
+    <App />
+  </Router>,
+
   document.getElementById('root')
 );
