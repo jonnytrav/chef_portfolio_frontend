@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import useGlobal from '../store';
 
-const Register = () => {
+const Register = props => {
   //For hooks this replaces the change handler
   const [username, setUserName] = useState('username');
   const [password, setPassword] = useState('password');
@@ -19,7 +19,7 @@ const Register = () => {
     const newUserData = { username, password, name, city, state, email, phone };
     console.log(globalState);
     //send CRUD request to API with the user info as argument
-    globalActions.registerUser(newUserData);
+    globalActions.registerUser(newUserData, props);
   };
   return (
     <div className="container">

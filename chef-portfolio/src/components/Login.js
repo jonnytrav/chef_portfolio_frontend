@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import useGlobal from '../store';
 
-const Login = () => {
+const Login = props => {
   //For hooks this replaces the change handler
   const [username, setUserName] = useState('username');
   const [password, setPassword] = useState('password');
@@ -12,9 +12,9 @@ const Login = () => {
   const submitHandler = event => {
     event.preventDefault();
     const creds = { username, password };
-    console.log(globalState);
+    // console.log('From Login Form', globalState);
     //send CRUD request to API for login
-    globalActions.Login(creds);
+    globalActions.Login(creds, props);
   };
 
   return (
