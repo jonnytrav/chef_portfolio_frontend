@@ -32,6 +32,7 @@ const Register = () => {
             name="username"
             onChange={e => setUserName(e.target.value)}
             onBlur={e => setUserName(e.target.value)}
+            required
           />
         </div>
         <div className="col-75">
@@ -41,6 +42,7 @@ const Register = () => {
             name="password"
             onChange={e => setPassword(e.target.value)}
             onBlur={e => setPassword(e.target.value)}
+            required
           />
         </div>
         <div className="col-75">
@@ -50,6 +52,7 @@ const Register = () => {
             name="name"
             onChange={e => setName(e.target.value)}
             onBlur={e => setName(e.target.value)}
+            required
           />
         </div>
         <div className="col-75">
@@ -59,6 +62,7 @@ const Register = () => {
             name="city"
             onChange={e => setCity(e.target.value)}
             onBlur={e => setCity(e.target.value)}
+            required
           />
         </div>
         <div className="col-75">
@@ -68,6 +72,7 @@ const Register = () => {
             name="state"
             onChange={e => setState(e.target.value)}
             onBlur={e => setState(e.target.value)}
+            required
           />
         </div>
         <div className="col-75">
@@ -77,6 +82,7 @@ const Register = () => {
             name="email"
             onChange={e => setEmail(e.target.value)}
             onBlur={e => setEmail(e.target.value)}
+            required
           />
         </div>
         <div className="col-75">

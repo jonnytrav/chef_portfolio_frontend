@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 
+import useGlobal from '../store';
+
 const Login = () => {
   //For hooks this replaces the change handler
   const [username, setUserName] = useState('username');
   const [password, setPassword] = useState('password');
 
-  //   console.log(username);
+  const [globalState, globalActions] = useGlobal();
+
   const submitHandler = event => {
     event.preventDefault();
-    console.log({ username, password });
+    const creds = { username, password };
+    console.log(globalState);
+    //send CRUD request to API for login
+    globalActions.Login(creds);
   };
+
   return (
     <div className="container">
       <h1>Login</h1>
