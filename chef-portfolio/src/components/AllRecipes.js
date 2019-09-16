@@ -6,7 +6,7 @@ import useGlobal from '../store';
 
 const mapRecipes = recipes => {
   return recipes.map(repo => (
-    <div key={repo.id}>
+    <div key={repo.id} className="container list">
       <h3>{repo.title}</h3>
       <p>{repo.meal_type}</p>
       <p>{repo.ingredients}</p>
@@ -14,16 +14,16 @@ const mapRecipes = recipes => {
   ));
 };
 
-const Recipes = () => {
+const AllRecipes = () => {
   //similar to componentDidMount
   useEffect(() => {
-    globalActions.getRecipes();
+    globalActions.getAllRecipes();
   }, []);
 
   const [globalState, globalActions] = useGlobal();
   const { status, recipes } = globalState;
   return (
-    <div className="container">
+    <div>
       {status === 'LOADING' && <h4>Loading...</h4>}
       {status === 'SUCCESS' && mapRecipes(recipes)}
       {status === 'EMPTY' && <h4>You have zero posts</h4>}
@@ -33,4 +33,4 @@ const Recipes = () => {
   );
 };
 
-export default Recipes;
+export default AllRecipes;

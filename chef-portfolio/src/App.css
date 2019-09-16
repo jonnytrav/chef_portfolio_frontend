@@ -13,6 +13,7 @@
   color: white;
 }
 
+/* Navbar styling */
 .nav-bar {
   background-color: #282c34;
   text-align: right;
@@ -34,6 +35,11 @@
   color: rgb(221, 90, 66);
 }
 
+/*End of Navbar styling */
+
+
+
+/* Form styling */
 .container {
   color: gray;
   border-radius: 5px;
@@ -43,10 +49,7 @@
   text-align: center
 }
 
-
-
 .register-form {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,16 +73,6 @@ textarea {
   float: right;
 }
 
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-
-.col-25 {
-  float: left;
-  width: 20%;
-  margin-top: 6px;
-}
 
 .col-75 {
   float: left;
@@ -96,3 +89,5 @@ button {
   cursor: pointer;
   float: right;
 }
+
+/*End of Form styling */
