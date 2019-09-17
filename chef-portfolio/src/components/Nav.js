@@ -8,7 +8,7 @@ function Nav() {
   const [globalState, globalActions] = useGlobal();
   const { isLoggedIn } = globalState;
   return (
-    <div className="nav-bar">
+    <div className="nav-bar ">
       <NavLink exact className="App-link" activeClassName="active-nav" to="/">
         Home
       </NavLink>
@@ -16,41 +16,37 @@ function Nav() {
         All Recipes
       </NavLink>
 
-      {isLoggedIn !== true && (
-        <NavLink
-          className="App-link"
-          activeClassName="active-nav"
-          to="/register"
-        >
-          Register
-        </NavLink>
-      )}
+      <NavLink
+        className={`App-link ${!isLoggedIn ? '' : 'hide-nav'}`}
+        activeClassName="active-nav"
+        to="/register"
+      >
+        Register
+      </NavLink>
 
-      {isLoggedIn !== true && (
-        <NavLink className="App-link" activeClassName="active-nav" to="/login">
-          Login
-        </NavLink>
-      )}
+      <NavLink
+        className={`App-link ${!isLoggedIn ? '' : 'hide-nav'}`}
+        activeClassName="active-nav"
+        to="/login"
+      >
+        Login
+      </NavLink>
 
-      {isLoggedIn === true && (
-        <NavLink
-          className="App-link"
-          activeClassName="active-nav"
-          to="/myrecipes"
-        >
-          Logout
-        </NavLink>
-      )}
+      <NavLink
+        className={`App-link ${isLoggedIn ? '' : 'hide-nav'}`}
+        activeClassName="active-nav"
+        to="#"
+      >
+        Log out
+      </NavLink>
 
-      {isLoggedIn === true && (
-        <NavLink
-          className="App-link"
-          activeClassName="active-nav"
-          to="/myrecipes"
-        >
-          My Recipes
-        </NavLink>
-      )}
+      <NavLink
+        className={`App-link ${isLoggedIn ? '' : 'hide-nav'}`}
+        activeClassName="active-nav"
+        to="/myrecipes"
+      >
+        My Recipes
+      </NavLink>
     </div>
   );
 }
