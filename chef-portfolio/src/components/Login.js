@@ -28,15 +28,17 @@ const Login = props => {
             name="username"
             onChange={e => setUserName(e.target.value)}
             onBlur={e => setUserName(e.target.value)}
+            required
           />
         </div>
         <div className="col-75">
           <input
             placeholder="Password"
-            type="text"
+            type="password"
             name="password"
             onChange={e => setPassword(e.target.value)}
             onBlur={e => setPassword(e.target.value)}
+            required
           />
         </div>
         <div className="col-75">
