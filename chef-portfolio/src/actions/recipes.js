@@ -13,10 +13,10 @@ export const getRecipes = async (store, request = axiosWithAuth) => {
       `https://chef-portfolio-webpt5.herokuapp.com/api/recipes/myrecipes`
     );
     // console.log('Response from Axios List', response);
-    const recipes = response.data;
-    const isReposEmpty = recipes.length === 0;
+    const myrecipes = response.data;
+    const isReposEmpty = myrecipes.length === 0;
     const status = isReposEmpty ? 'EMPTY' : 'SUCCESS';
-    store.setState({ recipes, status });
+    store.setState({ myrecipes, status });
     // store.actions.counter.addSuccess();
   } catch (error) {
     console.log(error);
@@ -73,10 +73,11 @@ export const createPost = async (store, newPost, props, request = axios) => {
   }
 };
 
-//Create new post/recipe
+//Delete post/recipe
 export const deletePost = async (store, id, props, request = axios) => {
+  store.actions.recipesActions.deleteRequest(id);
   try {
-    console.log('Delete Post: ', id);
+    console.log('Delete Post id: ', id);
     const response = await request.delete(
       `https://chef-portfolio-webpt5.herokuapp.com/api/recipes/${id}`
     );

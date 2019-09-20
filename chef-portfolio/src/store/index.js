@@ -7,7 +7,8 @@ const initialState = {
   userId: null,
   status: 'INITIAL',
   isLoggedIn: false,
-  recipes: []
+  recipes: [],
+  myrecipes: []
 };
 
 const useGlobal = useGlobalHook(React, initialState, actions);

@@ -30,7 +30,6 @@ export const registerUser = async (
   }
 };
 
-
 //Method for login
 export const Login = async (store, creds, props, request = axios) => {
   // console.log('Login Outside Actions', creds);
@@ -46,7 +45,7 @@ export const Login = async (store, creds, props, request = axios) => {
     const isLoggedIn = true;
 
     //Redirect user to protect route
-    props.history.push('/myrecipes');
+    props.history.push('/newpost');
 
     store.setState({ isLoggedIn, userId });
     //send token to headers for server to authenticate

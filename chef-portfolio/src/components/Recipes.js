@@ -28,19 +28,21 @@ const mapRecipes = (recipes, globalActions) => {
 
 //actual component being render and exported
 const Recipes = () => {
+  const [globalState, globalActions] = useGlobal();
+  const { status, myrecipes } = globalState;
+
   //similar to componentDidMount
   useEffect(() => {
     globalActions.recipes.getRecipes();
+
     //set en empty array to prevent inifite loop
   }, []);
 
-  const [globalState, globalActions] = useGlobal();
-  const { status, recipes } = globalState;
   return (
     //render base on the current status
     <div>
       {status === 'LOADING' && <h4>Loading...</h4>}
-      {status === 'SUCCESS' && mapRecipes(recipes, globalActions)}
+      {status === 'SUCCESS' && mapRecipes(myrecipes, globalActions)}
       {status === 'EMPTY' && <h4>You have zero posts</h4>}
       {status === 'NOT_FOUND' && <h4>404 - User not found</h4>}
       {status === 'ERROR' && <h4 className="container list">Unauthorized</h4>}
