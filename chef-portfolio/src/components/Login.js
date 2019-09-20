@@ -26,6 +26,7 @@ const Login = props => {
             placeholder="Username"
             type="text"
             name="username"
+            autoComplete="user-name"
             onChange={e => setUserName(e.target.value)}
             onBlur={e => setUserName(e.target.value)}
             required
@@ -36,6 +37,7 @@ const Login = props => {
             placeholder="Password"
             type="password"
             name="password"
+            autoComplete="current-password"
             onChange={e => setPassword(e.target.value)}
             onBlur={e => setPassword(e.target.value)}
             required

@@ -10,6 +10,10 @@ const mapRecipes = recipes => {
       <h3>{repo.title}</h3>
       <p>{repo.meal_type}</p>
       <p>{repo.ingredients}</p>
+      <div className="crud-container">
+        <button className="crud-buttons">Edit</button>
+        <button className="crud-buttons">Delete</button>
+      </div>
     </div>
   ));
 };

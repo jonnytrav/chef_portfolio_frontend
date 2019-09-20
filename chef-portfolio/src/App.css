@@ -35,6 +35,10 @@
   color: rgb(221, 90, 66);
 }
 
+.hide-nav {
+  display: none
+}
+
 /*End of Navbar styling */
 
 
@@ -91,3 +95,24 @@ button {
 }
 
 /*End of Form styling */
+
+/* List of recipes */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  margin: 20px 10px
+}
+
+.crud-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.crud-buttons {
+  float: center;
+  width: 25%;
+
+}

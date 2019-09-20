@@ -7,6 +7,7 @@ import useGlobal from '../store';
 function Nav() {
   const [globalState, globalActions] = useGlobal();
   const { isLoggedIn } = globalState;
+
   return (
     <div className="nav-bar ">
       <NavLink exact className="App-link" activeClassName="active-nav" to="/">
@@ -46,6 +47,13 @@ function Nav() {
         to="/myrecipes"
       >
         My Recipes
+      </NavLink>
+      <NavLink
+        className={`App-link ${isLoggedIn ? '' : 'hide-nav'}`}
+        activeClassName="active-nav"
+        to="/newpost"
+      >
+        New Post
       </NavLink>
     </div>
   );

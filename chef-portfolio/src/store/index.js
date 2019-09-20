@@ -4,16 +4,10 @@ import useGlobalHook from 'use-global-hook';
 import * as actions from '../actions';
 
 const initialState = {
-  users: {
-    username: '',
-    password: '',
-    city: '',
-    state: '',
-    email: '',
-    phone: ''
-  },
+  userId: null,
   status: 'INITIAL',
-  repos: []
+  isLoggedIn: false,
+  recipes: []
 };
 
 const useGlobal = useGlobalHook(React, initialState, actions);
