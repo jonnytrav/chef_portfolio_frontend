@@ -19,7 +19,7 @@ const Register = props => {
     const newUserData = { username, password, name, city, state, email, phone };
     console.log(globalState);
     //send CRUD request to API with the user info as argument
-    globalActions.registerUser(newUserData, props);
+    globalActions.users.registerUser(newUserData, props);
   };
   return (
     <div className="container">

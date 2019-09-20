@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+//importing store and actions
 import useGlobal from '../store';
 
 const Login = props => {
@@ -14,7 +15,7 @@ const Login = props => {
     const creds = { username, password };
     // console.log('From Login Form', globalState);
     //send CRUD request to API for login
-    globalActions.Login(creds, props);
+    globalActions.users.Login(creds, props);
   };
 
   return (

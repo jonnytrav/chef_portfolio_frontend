@@ -26,9 +26,9 @@ const Register = props => {
       ingredients,
       instructions
     };
-    console.log(globalState);
+    // console.log(globalState);
     //send CRUD request to API with the user info as argument
-    globalActions.createPost(newPost, props);
+    globalActions.recipes.createPost(newPost, props);
   };
   return (
     <div className="container">
