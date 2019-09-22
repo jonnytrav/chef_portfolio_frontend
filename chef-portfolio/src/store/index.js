@@ -9,7 +9,8 @@ const initialState = {
   loginUnaut: false,
   isLoggedIn: false,
   recipes: [],
-  myrecipes: []
+  myrecipes: [],
+  regErr: false
 };
 
 const useGlobal = useGlobalHook(React, initialState, actions);

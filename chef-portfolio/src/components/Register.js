@@ -13,6 +13,8 @@ const Register = props => {
   const [phone, setPhone] = useState('phone');
   //   console.log(username);
   const [globalState, globalActions] = useGlobal();
+  //get from state the regErr to show error if username is taken
+  const { regErr } = globalState;
 
   const submitHandler = event => {
     event.preventDefault();
@@ -24,6 +26,11 @@ const Register = props => {
   return (
     <div className="container">
       <h1>Create account</h1>
+      {regErr && (
+        <p className="wrong-creds">
+          User name and email must be unique, try again!
+        </p>
+      )}
       <form className="register-form" onSubmit={submitHandler}>
         <div className="col-75">
           <input

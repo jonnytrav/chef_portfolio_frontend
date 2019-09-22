@@ -4,9 +4,13 @@ import { NavLink } from 'react-router-dom';
 //accessing state for redender myrecipes navlink
 import useGlobal from '../store';
 
-function Nav() {
+const Nav = () => {
   const [globalState, globalActions] = useGlobal();
   const { isLoggedIn } = globalState;
+
+  const signOut = () => {
+    globalActions.users.LogOut();
+  };
 
   return (
     <div className="nav-bar ">
@@ -36,9 +40,9 @@ function Nav() {
       <NavLink
         className={`App-link ${isLoggedIn ? '' : 'hide-nav'}`}
         activeClassName="active-nav"
-        to="#"
+        to="/newpost"
       >
-        Log out
+        New Post
       </NavLink>
 
       <NavLink
@@ -48,14 +52,16 @@ function Nav() {
       >
         My Recipes
       </NavLink>
+
       <NavLink
         className={`App-link ${isLoggedIn ? '' : 'hide-nav'}`}
         activeClassName="active-nav"
-        to="/newpost"
+        to="/login"
+        onClick={signOut}
       >
-        New Post
+        Log out
       </NavLink>
     </div>
   );
-}
+};
 export default Nav;

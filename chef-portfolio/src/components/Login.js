@@ -9,6 +9,7 @@ const Login = props => {
   const [password, setPassword] = useState('password');
 
   const [globalState, globalActions] = useGlobal();
+  //get from state the loginUathorized to show error if creds are wrong
   const { loginUnaut } = globalState;
   const submitHandler = event => {
     event.preventDefault();

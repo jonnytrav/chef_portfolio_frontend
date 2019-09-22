@@ -23,9 +23,11 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         {/* <Route path="/myrecipes" component={MyRecipes} /> */}
-        <Route path="/newpost" component={NewPost} />
+        {/* <Route path="/newpost" component={NewPost} /> */}
 
+        {/* protected routes */}
         <PrivateRoute path="/myrecipes" component={MyRecipes} />
+        <PrivateRoute path="/newpost" component={NewPost} />
       </header>
     </div>
   );

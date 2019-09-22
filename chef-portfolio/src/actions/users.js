@@ -18,15 +18,19 @@ export const registerUser = async (
     );
     const responseServer = response.data;
     // console.log('AXIOS RESPONSE', response);
-
+    //set loginUnaut to false in case is true after trying
+    const loginUnaut = false;
+    const regErr = false;
     //Redirect user to login
     props.history.push('/login');
-    store.setState({ responseServer });
+    store.setState({ responseServer, loginUnaut, regErr });
   } catch (error) {
     const isError404 = error.response && error.response.status === 404;
     const status = isError404 ? 'NOT_FOUND' : 'ERROR';
-    console.log('Axios error', isError404, status);
-    store.setState({ status });
+    //401 unauthorized to setState for wrong creds message
+    const isError400 = error.response && error.response.status === 400;
+    const regErr = isError400 ? 'NOT_FOUND' : true;
+    store.setState({ status, regErr });
   }
 };
 
@@ -41,12 +45,12 @@ export const Login = async (store, creds, props, request = axios) => {
     //getting token and id from the decodedToken
     //coming from the response
     const token = response.data.token;
-    console.log('Token from login', token);
+    // console.log('Token from login', token);
     const userId = response.data.userId;
-    const isLoggedIn = true;
+    const isLoggedIn = response.data.token ? true : false;
 
     //Redirect user to protect route
-    props.history.push('/newpost');
+    props.history.push('/recipes');
 
     store.setState({ isLoggedIn, userId });
     //send token to headers for server to authenticate
@@ -60,4 +64,14 @@ export const Login = async (store, creds, props, request = axios) => {
     // console.log('Axios error', isError404, status);
     store.setState({ status, loginUnaut });
   }
+};
+
+//Method for logOut
+export const LogOut = store => {
+  //remove token from headers
+  localStorage.removeItem('authorization');
+  //check if there is a token if not set to false
+  const isLoggedIn = localStorage.getItem('authorization') ? true : false;
+  //   console.log(isLoggedIn);
+  store.setState({ isLoggedIn });
 };
