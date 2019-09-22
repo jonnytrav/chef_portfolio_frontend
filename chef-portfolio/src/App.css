@@ -94,6 +94,11 @@ button {
   float: right;
 }
 
+.wrong-creds {
+  color: red;
+  font-size: 14px
+}
+
 /*End of Form styling */
 
 /* List of recipes */

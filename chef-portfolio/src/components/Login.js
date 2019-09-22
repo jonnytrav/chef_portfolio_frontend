@@ -9,7 +9,7 @@ const Login = props => {
   const [password, setPassword] = useState('password');
 
   const [globalState, globalActions] = useGlobal();
-
+  const { loginUnaut } = globalState;
   const submitHandler = event => {
     event.preventDefault();
     const creds = { username, password };
@@ -44,6 +44,10 @@ const Login = props => {
             required
           />
         </div>
+        {loginUnaut && (
+          <p className="wrong-creds">Incorrect credentials, try again.</p>
+        )}
+
         <div className="col-75">
           <button type="submit">Login</button>
         </div>

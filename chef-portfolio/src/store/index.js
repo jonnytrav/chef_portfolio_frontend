@@ -6,6 +6,7 @@ import * as actions from '../actions';
 const initialState = {
   userId: null,
   status: 'INITIAL',
+  loginUnaut: false,
   isLoggedIn: false,
   recipes: [],
   myrecipes: []

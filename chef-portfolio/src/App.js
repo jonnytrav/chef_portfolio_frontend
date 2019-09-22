@@ -9,7 +9,7 @@ import Login from './components/Login';
 import MyRecipes from './components/Recipes';
 import AllRecipes from './components/AllRecipes';
 import NewPost from './components/NewPost';
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -22,10 +22,10 @@ function App() {
         <Route path="/recipes" component={AllRecipes} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
-        <Route path="/myrecipes" component={MyRecipes} />
+        {/* <Route path="/myrecipes" component={MyRecipes} /> */}
         <Route path="/newpost" component={NewPost} />
 
-        {/* <PrivateRoute path="/myrecipes" component={Recipes} /> */}
+        <PrivateRoute path="/myrecipes" component={MyRecipes} />
       </header>
     </div>
   );

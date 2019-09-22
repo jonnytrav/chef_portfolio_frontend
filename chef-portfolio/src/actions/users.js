@@ -41,6 +41,7 @@ export const Login = async (store, creds, props, request = axios) => {
     //getting token and id from the decodedToken
     //coming from the response
     const token = response.data.token;
+    console.log('Token from login', token);
     const userId = response.data.userId;
     const isLoggedIn = true;
 
@@ -53,7 +54,10 @@ export const Login = async (store, creds, props, request = axios) => {
   } catch (error) {
     const isError404 = error.response && error.response.status === 404;
     const status = isError404 ? 'NOT_FOUND' : 'ERROR';
-    console.log('Axios error', isError404, status);
-    store.setState({ status });
+    //401 unauthorized to setState for wrong creds message
+    const isError401 = error.response && error.response.status === 401;
+    const loginUnaut = isError401 ? 'NOT_FOUND' : true;
+    // console.log('Axios error', isError404, status);
+    store.setState({ status, loginUnaut });
   }
 };

@@ -14,7 +14,6 @@ const mapRecipes = (recipes, globalActions) => {
         <button
           onClick={e => {
             e.preventDefault();
-            console.log('from delete clcik', repo.id);
             globalActions.recipes.deletePost(repo.id);
           }}
           className="crud-buttons"
