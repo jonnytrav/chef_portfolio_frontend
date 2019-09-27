@@ -56,16 +56,6 @@ const Register = props => {
         </div>
         <div className="col-75">
           <input
-            placeholder="Image  *****"
-            type="text"
-            name="recipe_img"
-            onChange={e => setRecipeImg(e.target.value)}
-            onBlur={e => setRecipeImg(e.target.value)}
-            required
-          />
-        </div>
-        <div className="col-75">
-          <input
             placeholder="Ingredients"
             type="text"
             name="ingredients"
@@ -81,6 +71,15 @@ const Register = props => {
             name="instructions"
             onChange={e => setInstructions(e.target.value)}
             onBlur={e => setInstructions(e.target.value)}
+          />
+        </div>
+        <div className="col-75">
+          <input
+            placeholder="Image  *****"
+            type="file"
+            name="recipe_img"
+            onChange={e => setRecipeImg(e.target.value)}
+            onBlur={e => setRecipeImg(e.target.value)}
           />
         </div>
         <div className="col-75">

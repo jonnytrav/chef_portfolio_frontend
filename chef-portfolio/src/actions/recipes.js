@@ -60,7 +60,7 @@ export const createPost = async (store, newPost, props, request = axios) => {
       newPost
     );
     const responseServer = response.data;
-    console.log('AXIOS RESPONSE', response);
+    // console.log('AXIOS RESPONSE', response);
 
     //Redirect user to login
     props.history.push('/myrecipes');
@@ -90,5 +90,33 @@ export const deletePost = async (store, id, props, request = axios) => {
     const status = isError404 ? 'NOT_FOUND' : 'ERROR';
     console.log('Axios error', isError404, status);
     store.setState({ status });
+  }
+};
+
+//Update current post/recipe
+export const updatePost = async (
+  store,
+  newPost,
+  id,
+  props,
+  request = axios
+) => {
+  try {
+    // console.log('Put data: ', newPost, id);
+    const response = await request.put(
+      `https://chef-portfolio-webpt5.herokuapp.com/api/recipes/${id}`,
+      newPost
+    );
+    const responseServer = response.data;
+    // console.log('AXIOS RESPONSE', response);
+
+    //Redirect user to login
+    props.history.push('/myrecipes');
+    store.setState({ responseServer });
+  } catch (error) {
+    const isError404 = error.response && error.response.status === 404;
+    const status = isError404 ? 'NOT_FOUND' : 'ERROR';
+    console.log('Axios error', isError404, status);
+    store.setState({ error });
   }
 };

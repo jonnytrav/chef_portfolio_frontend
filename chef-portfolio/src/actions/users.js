@@ -29,7 +29,7 @@ export const registerUser = async (
     const status = isError404 ? 'NOT_FOUND' : 'ERROR';
     //401 unauthorized to setState for wrong creds message
     const isError400 = error.response && error.response.status === 400;
-    const regErr = isError400 ? 'NOT_FOUND' : true;
+    const regErr = isError400 ? true : false;
     store.setState({ status, regErr });
   }
 };
@@ -48,11 +48,12 @@ export const Login = async (store, creds, props, request = axios) => {
     // console.log('Token from login', token);
     const userId = response.data.userId;
     const isLoggedIn = response.data.token ? true : false;
-
+    const loginUnaut = false;
+    const regErr = false;
     //Redirect user to protect route
     props.history.push('/recipes');
 
-    store.setState({ isLoggedIn, userId });
+    store.setState({ isLoggedIn, userId, loginUnaut, regErr });
     //send token to headers for server to authenticate
     localStorage.setItem('authorization', token);
   } catch (error) {
@@ -60,7 +61,7 @@ export const Login = async (store, creds, props, request = axios) => {
     const status = isError404 ? 'NOT_FOUND' : 'ERROR';
     //401 unauthorized to setState for wrong creds message
     const isError401 = error.response && error.response.status === 401;
-    const loginUnaut = isError401 ? 'NOT_FOUND' : true;
+    const loginUnaut = isError401 ? true : false;
     // console.log('Axios error', isError404, status);
     store.setState({ status, loginUnaut });
   }

@@ -85,7 +85,7 @@ const Register = props => {
         <div className="col-75">
           <input
             placeholder="Email"
-            type="text"
+            type="email"
             name="email"
             onChange={e => setEmail(e.target.value)}
             onBlur={e => setEmail(e.target.value)}

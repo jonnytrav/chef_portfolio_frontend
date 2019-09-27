@@ -9,6 +9,7 @@ import Login from './components/Login';
 import MyRecipes from './components/Recipes';
 import AllRecipes from './components/AllRecipes';
 import NewPost from './components/NewPost';
+import UpdateRecipes from './components/UpdateRecipe';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 
         {/* protected routes */}
         <PrivateRoute path="/myrecipes" component={MyRecipes} />
+        <PrivateRoute exact path="/update/:id" component={UpdateRecipes} />
         <PrivateRoute path="/newpost" component={NewPost} />
       </header>
     </div>
