@@ -8,33 +8,31 @@ const UpdateRecipes = props => {
   const { status, myrecipes } = globalState;
 
   //   //initiate current values
-  //   let currentTItle = '';
-  //   let currentMealType = '';
-  //   let currentChefId = '';
-  //   let currentRecipeImg = '';
-  //   let currentIngredients = '';
-  //   let currentInstructions = '';
+  let currentTItle = '';
+  let currentMealType = '';
+  let currentRecipeImg = '';
+  let currentIngredients = '';
+  let currentInstructions = '';
 
-  //   myrecipes.map(repo => {
-  //     /* Get id from url */
-  //     const id = props.match.params.id;
-  //     /*console.log('id from URL: ', id);*/
-  //     /* Convert map if to a number to be match correctly */
-  //     if (`${repo.id}` === id) {
-  //       currentTItle = repo.title;
-  //       currentMealType = repo.meal_type;
-  //       currentChefId = repo.chef_id;
-  //       currentRecipeImg = repo.recipe_img;
-  //       currentIngredients = repo.ingredients;
-  //       currentInstructions = repo.instructions;
-  //     }
-  //   });
+  myrecipes.map(repo => {
+    /* Get id from url */
+    const id = props.match.params.id;
+    /*console.log('id from URL: ', id);*/
+    /* Convert map if to a number to be match correctly */
+    if (`${repo.id}` === id) {
+      currentTItle = repo.title;
+      currentMealType = repo.meal_type;
+      currentRecipeImg = repo.recipe_img;
+      currentIngredients = repo.ingredients;
+      currentInstructions = repo.instructions;
+    }
+  });
 
-  const [title, setTitle] = useState('Title');
-  const [meal_type, setMealType] = useState('meal_type');
-  const [recipe_img, setRecipeImg] = useState('recipe_img');
-  const [ingredients, setIngredients] = useState('ingredients');
-  const [instructions, setInstructions] = useState('instructions');
+  const [title, setTitle] = useState(currentTItle);
+  const [meal_type, setMealType] = useState(currentMealType);
+  const [recipe_img, setRecipeImg] = useState(currentRecipeImg);
+  const [ingredients, setIngredients] = useState(currentIngredients);
+  const [instructions, setInstructions] = useState(currentInstructions);
   //   console.log(username);
 
   //get the current user ID to post the entry under
@@ -76,7 +74,7 @@ const UpdateRecipes = props => {
           if (`${repo.id}` === id) {
             return (
               <div key={repo.id} className="container list">
-                <h1>{`Update: ${repo.title}`}</h1>
+                <h1>{`${repo.title}`}</h1>
                 <form
                   className="register-form"
                   onSubmit={event => {
@@ -88,6 +86,7 @@ const UpdateRecipes = props => {
                     <input
                       type="text"
                       name="title"
+                      value={title}
                       onChange={e => setTitle(e.target.value)}
                       onBlur={e => setTitle(e.target.value)}
                       required
@@ -95,9 +94,9 @@ const UpdateRecipes = props => {
                   </div>
                   <div className="col-75">
                     <input
-                      placeholder="Meal Type"
                       type="text"
                       name="meal_type"
+                      value={meal_type}
                       onChange={e => setMealType(e.target.value)}
                       onBlur={e => setMealType(e.target.value)}
                       required
@@ -105,9 +104,9 @@ const UpdateRecipes = props => {
                   </div>
                   <div className="col-75">
                     <input
-                      placeholder="Ingredients"
                       type="text"
                       name="ingredients"
+                      value={ingredients}
                       onChange={e => setIngredients(e.target.value)}
                       onBlur={e => setIngredients(e.target.value)}
                       required
@@ -115,16 +114,15 @@ const UpdateRecipes = props => {
                   </div>
                   <div className="col-75">
                     <input
-                      placeholder="Instructions"
                       type="text"
                       name="instructions"
+                      value={instructions}
                       onChange={e => setInstructions(e.target.value)}
                       onBlur={e => setInstructions(e.target.value)}
                     />
                   </div>
                   <div className="col-75">
                     <input
-                      placeholder="Image  *****"
                       type="file"
                       name="recipe_img"
                       onChange={e => setRecipeImg(e.target.value)}
