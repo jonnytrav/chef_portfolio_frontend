@@ -107,6 +107,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   width: 300px;
   margin: 20px 10px
 }
@@ -119,4 +120,11 @@ button {
 .crud-buttons {
   float: center;
   width: 25%;
+}
+
+img {
+  text-align: center;
+  height: 42px;
+  width: 42px;
+  padding: 20px
 }

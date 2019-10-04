@@ -6,6 +6,7 @@ const mapRecipes = recipes => {
   return recipes.map(repo => (
     <div key={repo.id} className="container list">
       <h3>{repo.title}</h3>
+      <img src={repo.recipe_img} alt="Recipe img" />
       <p>{repo.meal_type}</p>
       <p>{repo.ingredients}</p>
     </div>

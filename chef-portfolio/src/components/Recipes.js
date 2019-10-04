@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import useGlobal from '../store';
+import { removeProperties } from '@babel/types';
 
 //Component to map over the recipes array
 const mapRecipes = (recipes, globalActions, props) => {
@@ -12,15 +13,18 @@ const mapRecipes = (recipes, globalActions, props) => {
   const deletePost = id => {
     globalActions.recipes.deletePost(id);
   };
+
   return recipes.map(repo => (
     <div key={repo.id} className="container list">
       <h3>{repo.title}</h3>
+      <img src={repo.recipe_img} alt="Recipe img" />
       <p>{repo.meal_type}</p>
       <p>{repo.ingredients}</p>
       <div className="crud-container">
         <button
           className="crud-buttons"
           onClick={e => {
+            console.log(repo);
             e.preventDefault();
             updateAction(repo.id);
           }}
@@ -29,6 +33,7 @@ const mapRecipes = (recipes, globalActions, props) => {
         </button>
         <button
           onClick={e => {
+            console.log(e);
             e.preventDefault();
             deletePost(repo.id);
           }}

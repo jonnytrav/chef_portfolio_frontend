@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+// This import loads the firebase namespace along with all its type information.
+import firebase from '../config/firebase';
+
 //importing store and actions
 import useGlobal from '../store';
 
@@ -19,6 +22,20 @@ const Login = props => {
     globalActions.users.Login(creds, props);
   };
 
+  const fireBaseAuth = e => {
+    e.preventDefault();
+
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(res => {
+        const user = res.user;
+        console.log(user);
+
+        //here we could pass the user info from google to the db
+      });
+  };
   return (
     <div className="container">
       <h1>Login</h1>
@@ -51,6 +68,11 @@ const Login = props => {
 
         <div className="col-75">
           <button type="submit">Login</button>
+        </div>
+        <div className="col-75">
+          <button type="button" onClick={fireBaseAuth}>
+            Login with Google
+          </button>
         </div>
       </form>
     </div>
