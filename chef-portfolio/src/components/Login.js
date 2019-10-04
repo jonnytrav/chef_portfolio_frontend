@@ -14,24 +14,33 @@ const Login = props => {
   const [globalState, globalActions] = useGlobal();
   //get from state the loginUathorized to show error if creds are wrong
   const { loginUnaut } = globalState;
+
+  //Regular auth
   const submitHandler = event => {
     event.preventDefault();
     const creds = { username, password };
+    // console.log('Credentials: ', creds);
     // console.log('From Login Form', globalState);
     //send CRUD request to API for login
     globalActions.users.Login(creds, props);
   };
 
+  //firebase auth with google
   const fireBaseAuth = e => {
     e.preventDefault();
-
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase
       .auth()
       .signInWithPopup(provider)
       .then(res => {
         const user = res.user;
-        console.log(user);
+        // console.log('User name: ', user.displayName);
+        // console.log('User email: ', user.email);
+        // console.log('User UID: ', user.uid);
+        const creds = { username: user.email, password: user.uid };
+        // console.log('Credentials: ', creds);
+        //pass the creds to the method to login and redirect user
+        globalActions.users.Login(creds, props);
 
         //here we could pass the user info from google to the db
       });

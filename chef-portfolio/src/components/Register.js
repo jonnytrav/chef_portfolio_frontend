@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 import useGlobal from '../store';
 
+// This import loads the firebase namespace along with all its type information.
+import firebase from '../config/firebase';
+
 const Register = props => {
   //For hooks this replaces the change handler
   const [username, setUserName] = useState('username');
@@ -23,6 +26,32 @@ const Register = props => {
     //send CRUD request to API with the user info as argument
     globalActions.users.registerUser(newUserData, props);
   };
+
+  //firebase auth with google
+  const fireBaseAuth = e => {
+    e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(res => {
+        const user = res.user;
+        // console.log('User name: ', user.displayName);
+        // console.log('User email: ', user.email);
+        // console.log('User UID: ', user.uid);
+        const creds = {
+          username: user.email,
+          password: user.uid,
+          name: user.displayName
+        };
+        // console.log('Credentials: ', creds);
+        //pass the creds to the method to login and redirect user
+        globalActions.users.registerUser(creds, props);
+
+        //here we could pass the user info from google to the db
+      });
+  };
+
   return (
     <div className="container">
       <h1>Create account</h1>
@@ -103,6 +132,12 @@ const Register = props => {
         </div>
         <div className="col-75">
           <button type="submit">Register</button>
+        </div>
+
+        <div className="col-75">
+          <button type="button" onClick={fireBaseAuth}>
+            Sign up with Google
+          </button>
         </div>
       </form>
     </div>
