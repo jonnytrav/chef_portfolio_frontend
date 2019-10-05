@@ -122,9 +122,14 @@ button {
   width: 25%;
 }
 
+.image-container {
+  display: flex;
+  justify-content: center;
+
+}
+
 img {
-  text-align: center;
-  height: 42px;
-  width: 42px;
-  padding: 20px
+  height: 150px;
+  width: auto;
+  padding: 5px
 }

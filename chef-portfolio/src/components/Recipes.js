@@ -17,7 +17,9 @@ const mapRecipes = (recipes, globalActions, props) => {
   return recipes.map(repo => (
     <div key={repo.id} className="container list">
       <h3>{repo.title}</h3>
-      <img src={repo.recipe_img} alt="Recipe img" />
+      <div className="image-container">
+        <img src={repo.recipe_img} alt="Recipe img" />
+      </div>
       <p>{repo.meal_type}</p>
       <p>{repo.ingredients}</p>
       <div className="crud-container">

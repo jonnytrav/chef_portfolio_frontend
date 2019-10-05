@@ -42,7 +42,8 @@ const Register = props => {
         const creds = {
           username: user.email,
           password: user.uid,
-          name: user.displayName
+          name: user.displayName,
+          email: user.email
         };
         // console.log('Credentials: ', creds);
         //pass the creds to the method to login and redirect user
@@ -98,7 +99,6 @@ const Register = props => {
             name="city"
             onChange={e => setCity(e.target.value)}
             onBlur={e => setCity(e.target.value)}
-            required
           />
         </div>
         <div className="col-75">
@@ -108,7 +108,6 @@ const Register = props => {
             name="state"
             onChange={e => setState(e.target.value)}
             onBlur={e => setState(e.target.value)}
-            required
           />
         </div>
         <div className="col-75">
