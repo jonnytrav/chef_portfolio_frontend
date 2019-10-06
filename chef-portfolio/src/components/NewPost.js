@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import useGlobal from '../store';
 
+//Firebase photo upload
 import { storage } from '../config/firebase';
 
-// const firebaseImg = '';
 const Register = props => {
   //For hooks this replaces the change handler
   const [title, setTitle] = useState('title');
@@ -24,6 +24,7 @@ const Register = props => {
     event.preventDefault();
     //initialize variable to use it later
     let newPost = {};
+    
     //Firebase
     const uploadTask = storage
       .ref(`images/${recipe_img_original.name}`)
@@ -36,7 +37,7 @@ const Register = props => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
         setProgress(progress);
-        console.log('Upload is ' + progress + '% done');
+        // console.log('Upload is ' + progress + '% done');
       },
       function(error) {
         // Handle unsuccessful uploads
