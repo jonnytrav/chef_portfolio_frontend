@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 
 import useGlobal from '../store';
-import { removeProperties } from '@babel/types';
 
 //Component to map over the recipes array
 const mapRecipes = (recipes, globalActions, props) => {

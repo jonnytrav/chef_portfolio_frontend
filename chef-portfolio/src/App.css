@@ -133,3 +133,8 @@ img {
   width: auto;
   padding: 5px
 }
+
+progress {
+  width: 90%;
+
+}
