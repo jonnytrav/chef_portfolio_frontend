@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const axiosWithAuth = () => {
   const token = localStorage.getItem('authorization');
-  console.log('auth', token);
+  // console.log('Middleware auth', token);
   return axios.create({
     headers: {
       'Content-Type': 'application/json',

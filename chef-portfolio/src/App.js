@@ -6,7 +6,11 @@ import Nav from './components/Nav';
 import HomePage from './components/HomePage';
 import Register from './components/Register';
 import Login from './components/Login';
-import Recipes from './components/Recipes';
+import MyRecipes from './components/Recipes';
+import AllRecipes from './components/AllRecipes';
+import NewPost from './components/NewPost';
+import UpdateRecipes from './components/UpdateRecipe';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -16,9 +20,16 @@ function App() {
       <header className="App-header">
         {/* Component Routes */}
         <Route exact path="/" component={HomePage} />
+        <Route path="/recipes" component={AllRecipes} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
-        <Route path="/recipes" component={Recipes} />
+        {/* <Route path="/myrecipes" component={MyRecipes} /> */}
+        {/* <Route path="/newpost" component={NewPost} /> */}
+
+        {/* protected routes */}
+        <PrivateRoute path="/myrecipes" component={MyRecipes} />
+        <PrivateRoute exact path="/update/:id" component={UpdateRecipes} />
+        <PrivateRoute path="/newpost" component={NewPost} />
       </header>
     </div>
   );
