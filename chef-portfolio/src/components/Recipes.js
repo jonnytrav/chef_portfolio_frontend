@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 
+//reactstrap
+import { Spinner } from 'reactstrap';
+
 import useGlobal from '../store';
 
 //Component to map over the recipes array
@@ -62,7 +65,9 @@ const Recipes = props => {
   return (
     //render base on the current status
     <div>
-      {status === 'LOADING' && <h4>Loading...</h4>}
+      {status === 'LOADING' && (
+        <Spinner style={{ width: '5rem', height: '5rem' }} color="primary" />
+      )}
       {status === 'SUCCESS' && mapRecipes(myrecipes, globalActions, props)}
       {status === 'EMPTY' && <h4>You have zero posts</h4>}
       {status === 'NOT_FOUND' && <h4>404 - User not found</h4>}

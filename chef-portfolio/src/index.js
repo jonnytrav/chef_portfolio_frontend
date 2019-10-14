@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+//bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 //Implementing react router
 import { BrowserRouter as Router } from 'react-router-dom';
 

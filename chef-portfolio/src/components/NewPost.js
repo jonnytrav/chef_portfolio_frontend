@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+//Reactstrap
+import { Progress } from 'reactstrap';
 
 import useGlobal from '../store';
 
@@ -78,8 +80,7 @@ const Register = props => {
     <div className="container">
       {progress !== 0 ? (
         <div>
-          <p>{progress}%</p>
-          <progress value={progress} max="100" />
+          <Progress value={progress}>{progress}%</Progress>
         </div>
       ) : (
         <div>
