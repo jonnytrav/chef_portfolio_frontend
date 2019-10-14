@@ -21,7 +21,7 @@ const Login = props => {
     const creds = { username, password };
     // console.log('Credentials: ', creds);
     // console.log('From Login Form', globalState);
-    //send CRUD request to API for login
+    // send CRUD request to API for login
     globalActions.users.Login(creds, props);
   };
 

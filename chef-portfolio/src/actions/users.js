@@ -45,15 +45,16 @@ export const Login = async (store, creds, props, request = axios) => {
     //getting token and id from the decodedToken
     //coming from the response
     const token = response.data.token;
-    // console.log('Token from login', token);
+    // console.log('Token from login', response.data);
     const userId = response.data.userId;
+    const userName = response.data.userName;
     const isLoggedIn = response.data.token ? true : false;
     const loginUnaut = false;
     const regErr = false;
     //Redirect user to protect route
     props.history.push('/recipes');
 
-    store.setState({ isLoggedIn, userId, loginUnaut, regErr });
+    store.setState({ isLoggedIn, userId, loginUnaut, regErr, userName });
     //send token to headers for server to authenticate
     localStorage.setItem('authorization', token);
   } catch (error) {

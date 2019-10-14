@@ -19,12 +19,13 @@ const Register = props => {
 
   //get the current user ID to post the entry under
   const chef_id = globalState.userId;
+  const user_name = globalState.userName;
 
   const submitHandler = event => {
     event.preventDefault();
     //initialize variable to use it later
     let newPost = {};
-    
+
     //Firebase
     const uploadTask = storage
       .ref(`images/${recipe_img_original.name}`)
@@ -58,12 +59,13 @@ const Register = props => {
             newPost = {
               title,
               meal_type,
+              user_name,
               chef_id,
               recipe_img,
               ingredients,
               instructions
             };
-            // console.log('Testing: ', newPost);
+            console.log('userName: ', user_name);
             //invoking the method to put on the db a new post
             globalActions.recipes.createPost(newPost, props);
           });

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import useGlobal from '../store';
 
 const mapRecipes = recipes => {
+  // console.log('From all recipes component: ', recipes);
   return recipes.map(repo => (
     <div key={repo.id} className="container list">
       <h3>{repo.title}</h3>
@@ -11,6 +12,7 @@ const mapRecipes = recipes => {
       </div>
       <p>{repo.meal_type}</p>
       <p>{repo.ingredients}</p>
+      <p>{repo.user_name}</p>
     </div>
   ));
 };
