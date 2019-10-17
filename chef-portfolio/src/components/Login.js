@@ -1,54 +1,61 @@
-import React, { useState } from 'react';
-
-// This import loads the firebase namespace along with all its type information.
-import firebase from '../config/firebase';
+import React, { useState, useEffect } from 'react';
+import { firebase } from '../helpers/index';
 
 //importing store and actions
-import useGlobal from '../store';
+// import useGlobal from '../store';
 
 const Login = props => {
-  //For hooks this replaces the change handler
-  const [username, setUserName] = useState('username');
-  const [password, setPassword] = useState('password');
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setIsLoading(false);
+    firebase();
+  }, []);
 
-  const [globalState, globalActions] = useGlobal();
-  //get from state the loginUathorized to show error if creds are wrong
-  const { loginUnaut } = globalState;
+  // //For hooks this replaces the change handler
+  // const [username, setUserName] = useState('username');
+  // const [password, setPassword] = useState('password');
 
-  //Regular auth
-  const submitHandler = event => {
-    event.preventDefault();
-    const creds = { username, password };
-    // console.log('Credentials: ', creds);
-    // console.log('From Login Form', globalState);
-    // send CRUD request to API for login
-    globalActions.users.Login(creds, props);
-  };
+  // const [globalState, globalActions] = useGlobal();
+  // //get from state the loginUathorized to show error if creds are wrong
+  // const { loginUnaut } = globalState;
 
-  //firebase auth with google
-  const fireBaseAuth = e => {
-    e.preventDefault();
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(res => {
-        const user = res.user;
-        // console.log('User name: ', user.displayName);
-        // console.log('User email: ', user.email);
-        // console.log('User UID: ', user.uid);
-        const creds = { username: user.email, password: user.uid };
-        // console.log('Credentials: ', creds);
-        //pass the creds to the method to login and redirect user
-        globalActions.users.Login(creds, props);
+  // //Regular auth
+  // const submitHandler = event => {
+  //   event.preventDefault();
+  //   const creds = { username, password };
+  //   // console.log('Credentials: ', creds);
+  //   // console.log('From Login Form', globalState);
+  //   // send CRUD request to API for login
+  //   globalActions.users.Login(creds, props);
+  // };
 
-        //here we could pass the user info from google to the db
-      });
-  };
+  // // firebase auth with google
+  // const fireBaseAuth = e => {
+  //   e.preventDefault();
+  //   const provider = new firebase.auth.GoogleAuthProvider();
+  //   firebase
+  //     .auth()
+  //     .signInWithPopup(provider)
+  //     .then(res => {
+  //       const user = res.user;
+  //       // console.log('User name: ', user.displayName);
+  //       // console.log('User email: ', user.email);
+  //       // console.log('User UID: ', user.uid);
+  //       const creds = { username: user.email, password: user.uid };
+  //       // console.log('Credentials: ', creds);
+  //       //pass the creds to the method to login and redirect user
+  //       globalActions.users.Login(creds, props);
+
+  //       //here we could pass the user info from google to the db
+  //     });
+  // };
+
+  //end of firebase ui
+
   return (
     <div className="container">
       <h1>Login</h1>
-      <form className="register-form" onSubmit={submitHandler}>
+      {/* <form className="register-form" onSubmit={submitHandler}>
         <div className="col-75">
           <input
             placeholder="Username"
@@ -83,7 +90,9 @@ const Login = props => {
             Login with Google
           </button>
         </div>
-      </form>
+      </form> */}
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader"></div>
     </div>
   );
 };

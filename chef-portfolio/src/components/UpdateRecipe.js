@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useGlobal from '../store';
 
 //Firebase photo upload
-import { storage } from '../config/firebase';
+import { storage } from '../helpers/firebase';
 
 //actual component being render and exported
 const UpdateRecipes = props => {

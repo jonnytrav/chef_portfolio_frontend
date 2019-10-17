@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import useGlobal from '../store';
 
 // This import loads the firebase namespace along with all its type information.
-import firebase from '../config/firebase';
+import firebase from '../helpers/firebase';
 
 const Register = props => {
   //For hooks this replaces the change handler
@@ -130,11 +130,13 @@ const Register = props => {
           />
         </div>
         <div className="col-75">
-          <button type="submit">Register</button>
+          <button className="button" type="submit">
+            Register
+          </button>
         </div>
 
         <div className="col-75">
-          <button type="button" onClick={fireBaseAuth}>
+          <button className="button" type="button" onClick={fireBaseAuth}>
             Sign up with Google
           </button>
         </div>

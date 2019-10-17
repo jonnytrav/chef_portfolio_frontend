@@ -5,7 +5,7 @@ import { Progress } from 'reactstrap';
 import useGlobal from '../store';
 
 //Firebase photo upload
-import { storage } from '../config/firebase';
+import { storage } from '../helpers/firebase';
 
 const Register = props => {
   //For hooks this replaces the change handler
@@ -140,7 +140,9 @@ const Register = props => {
             </div>
 
             <div className="col-75">
-              <button type="submit">Create</button>
+              <button className="button" type="submit">
+                Create
+              </button>
             </div>
           </form>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './reset.css';
 import './App.css';
 import { Route } from 'react-router-dom';
 // Importing components

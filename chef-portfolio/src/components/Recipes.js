@@ -26,7 +26,7 @@ const mapRecipes = (recipes, globalActions, props) => {
       <p>{repo.ingredients}</p>
       <div className="crud-container">
         <button
-          className="crud-buttons"
+          className="crud-buttons button"
           onClick={e => {
             console.log(repo);
             e.preventDefault();
@@ -41,7 +41,7 @@ const mapRecipes = (recipes, globalActions, props) => {
             e.preventDefault();
             deletePost(repo.id);
           }}
-          className="crud-buttons"
+          className="crud-buttons button"
         >
           Delete
         </button>
